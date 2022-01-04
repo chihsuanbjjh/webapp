@@ -1,25 +1,42 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-  <link href="style.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
-  <body>
 
-    <h1 id="t1">小白的部落格</h1>
-    <p>標題</p>
-    <input type="text" id="title" placeholder="請輸入標題 input id=title" style="width:300px"/>
-    
-    <p>內容</p>
-    <textarea id="content" rows="8" placeholder="textarea id=content" style="width:300px"/></textarea>
-    <br>
-    <button id="btn">發佈 id="btn"</button>
-    <div id="list">
-      <div class="article">
-        <h2><a href="h2.html">今天天氣真好(page2)</a></h2>
-        <p>天氣真好</p>
-      </div>
-    </div>
+<body>
+    <p>
+        <input type="text" id='search-text'>
+        <select id="selectengine">
+            <option value="google">Google</option>
+            <option value="14000">ps4</option>
+            <option value="12000">xbox</option>
+        </select>
+    </p>
+    <p id="text"></p>
+    <button type="button" id="submitBtn" value="送出" onclick="fnorder()">
+        送出
+    </button>
 
-<!--     <script src =></script> -->
-    <script src="script.js"></script>
-  </body> 
+    <script type="text/javascript">
+        function fnorder() {
+            const search_list = {
+                "google_pre":"https://www.google.com/search?q=",
+                "google_suffix":"&newwindow=1&hl=zh-TW&sxsrf=AOaemvJBs3lbnwl1XYBhy6U-WWkmE7GVRA%3A1641191789290&source=hp&ei=bZnSYc3VDpDZ0ATS-67YDQ&iflsig=ALs-wAMAAAAAYdKnfRAS6y9TF5YljKD2cK6F3LhM-ppa&oq=&gs_lcp=Cgdnd3Mtd2l6EAEYADIHCCMQ6gIQJzIHCCMQ6gIQJzIHCCMQ6gIQJzINCC4QxwEQ0QMQ6gIQJzIHCCMQ6gIQJzINCC4QxwEQ0QMQ6gIQJzIHCCMQ6gIQJzIHCCMQ6gIQJzIHCCMQ6gIQJzIHCC4Q6gIQJ1AAWABg6k1oAXAAeACAAQCIAQCSAQCYAQCwAQo&sclient=gws-wiz&safe=active&ssui=on"
+            }
+            var searchtext = document.getElementById("search-text")
+            var selectengine = document.getElementById("selectengine");
+            var text = document.getElementById("text")
+            var url = search_list[selectengine.value+"_pre"]+searchtext.value+search_list[selectengine.value+"_suffix"]
+            window.location.href=url
+            console.log(url);
+        
+        }
+    </script>
+</body>
+
 </html>
